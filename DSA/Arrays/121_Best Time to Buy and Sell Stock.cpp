@@ -22,7 +22,7 @@ public:
 };
 
 
-// optimised approach is to keep track of the minimum price and calculate the profit at each step and update the maximum profit accordingly. This approach has a time complexity of O(n) and space complexity of O(1).
+// optimised approach is to keep track of the minimum price and calculate the profit at each step and update the maximum profit accordingly. This approach has a time complexity of O(n)
 
 class Solution {
 public:
