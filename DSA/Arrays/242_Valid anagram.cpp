@@ -23,7 +23,7 @@ public:
 
 
 
-// optimised approach using unordered_map to count the frequency of characters in string s and then decrement the frequency for characters in string t. Finally, check if all frequencies are zero, if not then return false.
+// optimised approach using unordered_map to count the frequency of characters in string s and then decrement the frequency for characters. in string t. Finally, check if all frequencies are zero, if not then return false.
 
 class Solution {
 public:
