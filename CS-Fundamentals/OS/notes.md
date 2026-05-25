@@ -167,27 +167,97 @@ Process cannot continue until resource becomes available.
 
 # 12. CPU Scheduling
 
-CPU scheduling decides:
-which process gets CPU next.
+CPU Scheduling is the process used by Operating System to decide:
+
+which process gets CPU next and for how much time.
+
+CPU can execute only one process at a time (per core),
+so OS must decide which process should run first.
+
+Example:
+If:
+- Chrome
+- VS Code
+- Spotify
+
+all want CPU together,
+then OS uses CPU Scheduling Algorithms to decide execution order.
+
+Goals of CPU Scheduling:
+- Better CPU utilization
+- Faster response time
+- Fair execution
+- Minimum waiting time
 
 ---
 
-# 13. FCFS (First Come First Serve)
+# 13. Types of CPU Scheduling Algorithms
 
-Process arriving first executes first.
+Main CPU Scheduling Algorithms are:
+
+1. FCFS (First Come First Serve)
+2. SJF (Shortest Job First)
+3. SRTF (Shortest Remaining Time First)
+4. Round Robin (RR)
+5. Priority Scheduling
+
+---
+
+# 14. FCFS (First Come First Serve)
+
+In FCFS:
+the process that arrives first gets CPU first.
+
+Example:
+
+P1 -> P2 -> P3
+
+Execution Order:
+P1 executes completely first,
+then P2,
+then P3.
+
+Real Life Example:
+Ticket counter queue.
 
 Advantages:
 - Simple
+- Easy to implement
 
 Disadvantages:
 - Long waiting time
 - Convoy effect
 
+Convoy Effect:
+small processes wait behind long process.
+
+Example:
+If P1 takes 20 seconds,
+then all small processes behind it must wait.
+
+Type:
+Non-Preemptive
+
 ---
 
-# 14. SJF (Shortest Job First)
+# 15. SJF (Shortest Job First)
 
-Process with shortest burst time executes first.
+In SJF:
+process with shortest burst time executes first.
+
+Burst Time:
+total CPU execution time needed by process.
+
+Example:
+
+| Process | Burst Time |
+|---|---|
+| P1 | 10 |
+| P2 | 2 |
+| P3 | 5 |
+
+Execution:
+P2 -> P3 -> P1
 
 Advantages:
 - Minimum average waiting time
@@ -195,18 +265,228 @@ Advantages:
 Disadvantages:
 - Starvation possible
 
+Starvation:
+long process may never get CPU because short jobs keep arriving.
+
+Type:
+Non-Preemptive
+
 ---
 
-# 15. Round Robin
+# 16. SRTF (Shortest Remaining Time First)
 
-Each process gets fixed CPU time called Time Quantum.
+SRTF is the preemptive version of SJF.
+
+In this algorithm:
+the process with shortest remaining execution time gets CPU.
+
+If a new shorter process arrives,
+OS removes CPU from current process and gives it to shorter process.
 
 Example:
+
+| Process | Burst Time |
+|---|---|
+| P1 | 8 |
+| P2 | 2 |
+
+If P1 is running and P2 arrives,
+CPU switches to P2.
+
+Advantages:
+- Better response time
+- Good average waiting time
+
+Disadvantages:
+- More context switching
+- Starvation possible
+
+Type:
+Preemptive
+
+---
+
+# 17. Round Robin (RR)
+
+Round Robin gives fixed CPU time to each process.
+
+This fixed time is called:
+Time Quantum.
+
+Example:
+
+Time Quantum = 2ms
+
+Execution:
 P1 -> P2 -> P3 -> P1
+
+Each process gets CPU for only 2ms.
+
+If process is not completed:
+it goes back to Ready Queue.
 
 Advantages:
 - Fair scheduling
 - Good responsiveness
+- Suitable for multitasking systems
 
 Disadvantages:
 - High context switching overhead
+- Performance decreases if time quantum is very small
+
+Type:
+Preemptive
+
+---
+
+# 18. Time Quantum
+
+Time Quantum is fixed CPU time given to each process in Round Robin Scheduling.
+
+Example:
+
+Time Quantum = 2ms
+
+CPU executes:
+- P1 for 2ms
+- P2 for 2ms
+- P3 for 2ms
+
+then repeats again.
+
+---
+
+# 19. Problem with Small Time Quantum
+
+If Time Quantum is very small:
+then CPU performs too many context switches.
+
+During every switch:
+- current process state is saved
+- next process state is loaded
+
+This increases overhead and reduces CPU performance.
+
+Too many context switches waste CPU time.
+
+---
+
+# 20. Priority Scheduling
+
+In Priority Scheduling:
+CPU is allocated to highest priority process first.
+
+Example:
+
+| Process | Priority |
+|---|---|
+| P1 | 1 |
+| P2 | 5 |
+
+Smaller number usually means higher priority.
+
+So:
+P1 executes before P2.
+
+Advantages:
+- Important processes execute first
+
+Disadvantages:
+- Low priority processes may starve
+
+Type:
+Can be both:
+- Preemptive
+- Non-Preemptive
+
+---
+
+# 21. Starvation
+
+Starvation means:
+a process waits for CPU for a very long time or may never get CPU.
+
+Example:
+In SJF,
+long processes may continuously wait because short processes keep arriving.
+
+Example:
+
+P1 burst time = 20
+P2 burst time = 1
+P3 burst time = 1
+
+CPU keeps selecting shorter jobs.
+
+So P1 waits for very long time.
+
+---
+
+# 22. Preemptive Scheduling
+
+In Preemptive Scheduling:
+OS can remove CPU from a running process and give it to another process.
+
+Example:
+- Round Robin
+- SRTF
+
+Example:
+If time quantum ends in Round Robin,
+OS switches CPU to another process.
+
+Advantages:
+- Better responsiveness
+- Fair CPU sharing
+
+Disadvantages:
+- More context switching
+- More overhead
+
+---
+
+# 23. Non-Preemptive Scheduling
+
+In Non-Preemptive Scheduling:
+once process gets CPU,
+it continues execution until:
+- process finishes
+or
+- process enters waiting state
+
+CPU is not forcefully taken away.
+
+Examples:
+- FCFS
+- SJF
+
+Advantages:
+- Simple
+- Less context switching
+
+Disadvantages:
+- Poor responsiveness
+- Long waiting possible
+
+---
+
+# 24. Difference Between Preemptive and Non-Preemptive Scheduling
+
+| Preemptive | Non-Preemptive |
+|---|---|
+| CPU can be taken away | CPU cannot be forcefully removed |
+| Better responsiveness | Simpler implementation |
+| More context switching | Less context switching |
+| More overhead | Less overhead |
+
+---
+
+# 25. Which Scheduling Algorithms are Preemptive?
+
+| Algorithm | Type |
+|---|---|
+| FCFS | Non-Preemptive |
+| SJF | Non-Preemptive |
+| SRTF | Preemptive |
+| Round Robin | Preemptive |
+| Priority Scheduling | Both possible |
