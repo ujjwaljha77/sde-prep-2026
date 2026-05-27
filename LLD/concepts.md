@@ -136,18 +136,68 @@ Different behavior:
 
 # SOLID Principles Day 2
 
-# S - Single Responsibility Principle
+# S - Single Responsibility Principle (SRP)
 
-One class should have only one responsibility.
+Single Responsibility Principle means:
 
-Bad:
-One class doing:
+A class should have only one responsibility or one reason to change.
+
+Bad Design:
+One class handles:
 - login
 - email
 - report generation
 
-Good:
-Separate classes for each work.
+If email system changes,
+whole class may need modification.
+
+This increases complexity.
+
+---
+
+# Bad Example
+
+class Employee {
+public:
+
+    void calculateSalary() {
+        cout << "Calculating Salary";
+    }
+
+    void saveToDatabase() {
+        cout << "Saving to DB";
+    }
+
+    void generateReport() {
+        cout << "Generating Report";
+    }
+};
+
+# Good Example
+
+class SalaryCalculator {
+public:
+
+    void calculateSalary() {
+        cout << "Calculating Salary";
+    }
+};
+
+class EmployeeDatabase {
+public:
+
+    void saveToDatabase() {
+        cout << "Saving to DB";
+    }
+};
+
+class ReportGenerator {
+public:
+
+    void generateReport() {
+        cout << "Generating Report";
+    }
+};
 
 ---
 
