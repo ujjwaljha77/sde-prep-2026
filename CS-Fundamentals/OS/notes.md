@@ -698,3 +698,216 @@ waiting for spoon
 Both wait forever.
 
 This is real-life deadlock example.
+
+---
+
+# OS Notes Day 5
+
+# Memory Management
+
+Memory Management is the process used by Operating System to manage RAM efficiently between multiple programs.
+
+OS decides:
+- which process gets memory
+- how much memory is needed
+- when memory should be released
+
+---
+
+# Stack Memory
+
+Stack memory is automatic temporary memory managed by compiler.
+
+It stores:
+- local variables
+- function calls
+- function parameters
+
+Example:
+
+```cpp
+int a = 5;
+````
+
+a is stored in stack memory.
+
+---
+
+# Function Call in Stack
+
+```cpp
+void fun() {
+    int x = 10;
+}
+```
+
+When function runs:
+
+* stack frame is created
+* x is stored in stack
+
+When function ends:
+
+* memory is automatically removed
+
+This is why stack memory is temporary.
+
+---
+
+# Stack Features
+
+* Fast memory allocation
+* Automatic memory management
+* Small memory size
+* Uses LIFO (Last In First Out)
+
+---
+
+# Stack Overflow
+
+Stack Overflow happens when stack memory becomes full.
+
+Reasons:
+
+* infinite recursion
+* very large local variables
+
+Example:
+
+```cpp
+void fun() {
+    fun();
+}
+```
+
+Infinite recursive calls keep increasing stack frames.
+
+Eventually stack becomes full.
+
+This causes Stack Overflow.
+
+---
+
+# Heap Memory
+
+Heap memory is dynamic memory managed manually by programmer.
+
+Heap memory is used when:
+
+* memory size is not known before runtime
+* large memory allocation is needed
+
+Example:
+
+```cpp
+int* p = new int(5);
+```
+
+This memory is allocated inside heap.
+
+---
+
+# Dynamic Memory
+
+Dynamic memory means:
+memory size is decided during runtime.
+
+Example:
+
+```cpp
+int n;
+cin >> n;
+
+int* arr = new int[n];
+```
+
+User gives size during execution.
+
+So memory is allocated dynamically.
+
+---
+
+# Heap Features
+
+* Large memory size
+* Flexible memory allocation
+* Slower than stack
+* Programmer must manually release memory
+
+---
+
+# Memory Leak
+
+Memory Leak happens when dynamically allocated memory is not released.
+
+Example:
+
+```cpp
+int* p = new int(5);
+```
+
+If:
+
+```cpp
+delete p;
+```
+
+is not used,
+memory remains occupied unnecessarily.
+
+This causes Memory Leak.
+
+---
+
+# Dangling Pointer
+
+Dangling Pointer means:
+pointer points to memory that is already deleted.
+
+Example:
+
+```cpp
+int* p = new int(5);
+
+delete p;
+```
+
+Now:
+p still stores old address,
+but memory is already released.
+
+This is dangerous.
+
+---
+
+# Stack vs Heap
+
+| Stack                  | Heap                  |
+| ---------------------- | --------------------- |
+| Automatic memory       | Manual memory         |
+| Fast                   | Slower                |
+| Small size             | Large size            |
+| Temporary              | Dynamic               |
+| Compiler managed       | Programmer managed    |
+| Stores local variables | Stores dynamic memory |
+
+---
+
+# Easy Difference
+
+Stack:
+
+* temporary
+* fast
+* automatic
+
+Heap:
+
+* dynamic
+* flexible
+* manual
+
+```
+
+Existing notes file loaded successfully. :contentReference[oaicite:0]{index=0}
+```
