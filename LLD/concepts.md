@@ -239,3 +239,124 @@ Use interfaces instead of directly depending on:
 - MySQL
 - MongoDB
 etc.
+
+---
+
+````md id="ocp8xp"
+# SOLID Principles Day 6
+
+# O - Open Closed Principle (OCP)
+
+Open Closed Principle means:
+
+Software should be:
+- open for extension
+- closed for modification
+
+Meaning:
+new features should be added without changing existing code.
+
+---
+
+# Bad Design
+
+```cpp
+class Payment {
+public:
+
+    void pay(string type) {
+
+        if(type == "UPI") {
+            cout << "UPI Payment";
+        }
+
+        else if(type == "Card") {
+            cout << "Card Payment";
+        }
+    }
+};
+````
+
+Problem:
+If new payment method comes like:
+
+* NetBanking
+* Crypto
+* Wallet
+
+then existing class must be modified again and again.
+
+This increases:
+
+* bugs
+* complexity
+* testing effort
+
+This violates OCP.
+
+---
+
+# Good Design
+
+```cpp
+class Payment {
+public:
+    virtual void pay() = 0;
+};
+
+class UPI : public Payment {
+public:
+
+    void pay() {
+        cout << "UPI Payment";
+    }
+};
+
+class Card : public Payment {
+public:
+
+    void pay() {
+        cout << "Card Payment";
+    }
+};
+
+class NetBanking : public Payment {
+public:
+
+    void pay() {
+        cout << "NetBanking Payment";
+    }
+};
+```
+
+Now:
+new payment methods can be added by creating new classes.
+
+Existing code does not need modification.
+
+This follows OCP.
+
+---
+
+# Advantages of OCP
+
+* Easy extension
+* Less bugs
+* Better scalability
+* Better maintainability
+* Safer updates
+
+---
+
+# Real Life Example
+
+Mobile charger socket:
+
+New chargers and devices can be connected without changing wall socket.
+
+Same idea:
+extend functionality without modifying old system.
+
+```
+
+---
