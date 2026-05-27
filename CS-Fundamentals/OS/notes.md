@@ -490,3 +490,211 @@ Disadvantages:
 | SRTF | Preemptive |
 | Round Robin | Preemptive |
 | Priority Scheduling | Both possible |
+
+---
+
+# OS Notes Day 4
+
+# 26. Deadlock
+
+Deadlock happens when two or more processes wait forever for each other’s resources.
+
+Example:
+
+P1:
+holds Resource A
+waiting for Resource B
+
+P2:
+holds Resource B
+waiting for Resource A
+
+Both processes wait forever.
+
+This condition is called Deadlock.
+
+---
+
+# 27. 4 Coffman Conditions For Deadlock
+
+Deadlock occurs only if all these 4 conditions exist together.
+
+---
+
+## 1. Mutual Exclusion
+
+A resource can be used by only one process at a time.
+
+Example:
+- Printer
+- File lock
+- Mutex
+
+If everyone could use resource together,
+deadlock would not happen.
+
+---
+
+## 2. Hold and Wait
+
+Process holds one resource and waits for another resource.
+
+Example:
+
+P1:
+holds Resource A
+waiting for Resource B
+
+---
+
+## 3. No Preemption
+
+Resource cannot be forcefully taken away by OS.
+
+Process releases resource only after work completes.
+
+If OS could forcefully remove resource,
+deadlock could be broken.
+
+---
+
+## 4. Circular Wait
+
+Processes form circular dependency.
+
+Example:
+
+P1 waits for P2
+P2 waits for P3
+P3 waits for P1
+
+This circular chain causes deadlock.
+
+---
+
+# 28. Important Point
+
+Deadlock is possible only when all 4 Coffman conditions occur together.
+
+If even one condition is removed,
+deadlock cannot happen.
+
+---
+
+# 29. Deadlock Prevention
+
+Deadlock Prevention means:
+system is designed in such a way that deadlock never happens.
+
+Idea:
+break one of the Coffman conditions.
+
+Example:
+avoid circular wait by forcing fixed resource order.
+
+Advantages:
+- Deadlock impossible
+
+Disadvantages:
+- Resource utilization may decrease
+- Less flexibility
+
+---
+
+# 30. Deadlock Avoidance
+
+Deadlock Avoidance means:
+OS checks whether resource allocation keeps system in safe state or not.
+
+If system becomes unsafe,
+resource is not allocated.
+
+Most famous algorithm:
+Banker’s Algorithm
+
+Safe State:
+system can execute all processes safely.
+
+Unsafe State:
+deadlock may happen in future.
+
+Advantages:
+- Better resource utilization than prevention
+
+Disadvantages:
+- More complex
+- Requires future resource information
+
+---
+
+# 31. Banker’s Algorithm
+
+Banker’s Algorithm works like bank loan system.
+
+OS checks:
+if resources are allocated now,
+will system still remain safe?
+
+If yes:
+allocate resource.
+
+If no:
+process must wait.
+
+---
+
+# 32. Deadlock Detection
+
+In Deadlock Detection:
+OS allows deadlock to happen first,
+then detects it later.
+
+OS periodically checks:
+whether circular waiting exists or not.
+
+Advantages:
+- Simple allocation policy
+
+Disadvantages:
+- Deadlock may already affect system
+
+---
+
+# 33. Deadlock Recovery
+
+If deadlock is detected,
+OS must recover from it.
+
+Methods:
+- terminate processes
+- restart processes
+- forcefully release resources
+
+---
+
+# 34. Difference Between Prevention, Avoidance, Detection
+
+| Method | Idea |
+|---|---|
+| Prevention | Never allow deadlock conditions |
+| Avoidance | Allocate resources carefully |
+| Detection | Detect deadlock after it occurs |
+| Recovery | Remove deadlock after detection |
+
+---
+
+# 35. Real Life Example
+
+Suppose:
+
+Person 1:
+has spoon
+waiting for fork
+
+Person 2:
+has fork
+waiting for spoon
+
+Both wait forever.
+
+This is real-life deadlock example.
