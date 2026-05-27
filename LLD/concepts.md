@@ -358,5 +358,3 @@ Same idea:
 extend functionality without modifying old system.
 
 ```
-
----
