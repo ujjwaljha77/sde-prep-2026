@@ -908,6 +908,3 @@ Heap:
 * manual
 
 ```
-
-Existing notes file loaded successfully. :contentReference[oaicite:0]{index=0}
-```

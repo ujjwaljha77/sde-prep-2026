@@ -358,9 +358,6 @@ extend functionality without modifying old system.
 
 ```
 
----
-
-````md id="solid9xp"
 # SOLID Principles Day 7
 
 # L - Liskov Substitution Principle (LSP)
