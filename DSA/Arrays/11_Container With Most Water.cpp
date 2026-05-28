@@ -19,8 +19,8 @@ public:
     }
 };
 
-yaha humne 2 pointer technique use kiya hai left right left index 0 sey or right index last sey chalu hoga
-abb ham dekngey ki height[left] height[right] se chota hai to left pointer ko aage badha do left++ karo
-abb ham dekngey ki height[right] height[left] se chota hai to right pointer ko peeche le aao right-- karo
-abb ham dekngey ki height[left] height[right] ke barabar hai to left pointer ko aage badha do left++ karo or right pointer ko peeche le aao right-- karo
-abb jab tak left pointer right pointer se chota hai tab tak loop chalega
+// yaha humne 2 pointer technique use kiya hai left right left index 0 sey or right index last sey chalu hoga
+// abb ham dekngey ki height[left] height[right] se chota hai to left pointer ko aage badha do left++ karo
+// abb ham dekngey ki height[right] height[left] se chota hai to right pointer ko peeche le aao right-- karo
+// abb ham dekngey ki height[left] height[right] ke barabar hai to left pointer ko aage badha do left++ karo or right pointer ko peeche le aao right-- karo
+// abb jab tak left pointer right pointer se chota hai tab tak loop chalega
