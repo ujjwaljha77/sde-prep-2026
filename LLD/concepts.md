@@ -242,7 +242,6 @@ etc.
 
 ---
 
-````md id="ocp8xp"
 # SOLID Principles Day 6
 
 # O - Open Closed Principle (OCP)
@@ -356,5 +355,344 @@ New chargers and devices can be connected without changing wall socket.
 
 Same idea:
 extend functionality without modifying old system.
+
+```
+
+---
+
+````md id="solid9xp"
+# SOLID Principles Day 7
+
+# L - Liskov Substitution Principle (LSP)
+
+Liskov Substitution Principle means:
+
+Child class should properly replace parent class without breaking program logic.
+
+If child class cannot behave like parent class,
+then inheritance design is wrong.
+
+---
+
+# Bad Example
+
+```cpp
+class Bird {
+public:
+
+    void fly() {
+        cout << "Flying";
+    }
+};
+
+class Penguin : public Bird {
+};
+````
+
+Problem:
+
+Penguin cannot fly,
+but because of inheritance:
+
+```cpp
+Penguin p;
+p.fly();
+```
+
+becomes possible.
+
+This is wrong design.
+
+This violates LSP.
+
+---
+
+# Good Example
+
+```cpp
+class Bird {
+};
+
+class FlyingBird : public Bird {
+public:
+
+    void fly() {
+        cout << "Flying";
+    }
+};
+
+class Sparrow : public FlyingBird {
+};
+
+class Penguin : public Bird {
+};
+```
+
+Now:
+
+* Sparrow can fly
+* Penguin cannot fly
+
+Proper inheritance is maintained.
+
+---
+
+# Main Idea of LSP
+
+Child class should behave correctly when used in place of parent class.
+
+---
+
+# Real Life Example
+
+Vehicle:
+
+* Car
+* Bike
+
+can inherit Vehicle.
+
+But:
+
+* Fan
+* Chair
+
+cannot inherit Vehicle.
+
+Inheritance should represent proper relationship.
+
+---
+
+# I - Interface Segregation Principle (ISP)
+
+Interface Segregation Principle means:
+
+Do not force classes to implement unnecessary methods.
+
+Small and specific interfaces are better.
+
+---
+
+# Bad Example
+
+```cpp
+class Worker {
+public:
+
+    virtual void code() = 0;
+    virtual void cook() = 0;
+};
+```
+
+Now:
+
+```cpp
+class SoftwareEngineer : public Worker
+```
+
+must implement:
+
+```cpp
+cook()
+```
+
+even though software engineer does not cook.
+
+This is unnecessary.
+
+This violates ISP.
+
+---
+
+# Good Example
+
+```cpp
+class Coder {
+public:
+
+    virtual void code() = 0;
+};
+
+class Chef {
+public:
+
+    virtual void cook() = 0;
+};
+```
+
+Now:
+
+```cpp
+class SoftwareEngineer : public Coder {
+public:
+
+    void code() {
+        cout << "Writing Code";
+    }
+};
+```
+
+And:
+
+```cpp
+class Cook : public Chef {
+public:
+
+    void cook() {
+        cout << "Cooking Food";
+    }
+};
+```
+
+Now:
+
+* SoftwareEngineer only codes
+* Cook only cooks
+
+No unnecessary methods are forced.
+
+---
+
+# Main Idea of ISP
+
+Classes should implement only methods they actually need.
+
+---
+
+# Real Life Example
+
+Chef should not be forced to write code.
+
+Software engineer should not be forced to cook.
+
+---
+
+# D - Dependency Inversion Principle (DIP)
+
+Dependency Inversion Principle means:
+
+Depend on abstraction,
+not on concrete classes.
+
+High level modules should not directly depend on low level implementations.
+
+---
+
+# Bad Example
+
+```cpp
+class MySQL {
+public:
+
+    void connect() {
+        cout << "MySQL Connected";
+    }
+};
+
+class App {
+public:
+
+    MySQL db;
+
+    void start() {
+        db.connect();
+    }
+};
+```
+
+Problem:
+
+If database changes to MongoDB,
+App class must also change.
+
+This creates tight coupling.
+
+---
+
+# Good Example
+
+```cpp
+class Database {
+public:
+
+    virtual void connect() = 0;
+};
+
+class MySQL : public Database {
+public:
+
+    void connect() {
+        cout << "MySQL Connected";
+    }
+};
+
+class MongoDB : public Database {
+public:
+
+    void connect() {
+        cout << "MongoDB Connected";
+    }
+};
+
+class App {
+public:
+
+    Database* db;
+
+    App(Database* db) {
+        this->db = db;
+    }
+
+    void start() {
+        db->connect();
+    }
+};
+```
+
+Now:
+
+* App depends on Database abstraction
+* MySQL or MongoDB can be used easily
+* App class does not need modification
+
+This follows DIP.
+
+---
+
+# Main Idea of DIP
+
+Depend on interfaces/abstractions,
+not directly on concrete implementations.
+
+---
+
+# Real Life Example
+
+Phone uses USB interface.
+
+Phone does not depend on one specific charger brand.
+
+Different chargers can work using same interface.
+
+---
+
+# Easy Summary
+
+SRP:
+One class → One responsibility
+
+OCP:
+Open for extension,
+closed for modification
+
+LSP:
+Child should properly behave like parent
+
+ISP:
+Do not force unnecessary methods
+
+DIP:
+Depend on abstraction,
+not concrete implementation
 
 ```
