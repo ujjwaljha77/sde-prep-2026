@@ -693,3 +693,200 @@ Depend on abstraction,
 not concrete implementation
 
 ```
+
+---
+
+````md id="lld8xp"
+# LLD Notes Day 8
+
+# Design Patterns
+
+Design Patterns are reusable solutions to common software design problems.
+
+They help in:
+- writing clean code
+- improving scalability
+- reducing code duplication
+- improving maintainability
+
+---
+
+# Singleton Design Pattern
+
+Singleton Design Pattern ensures:
+
+only one object of a class is created during entire program execution.
+
+---
+
+# Why Singleton is Needed
+
+Some resources should have only one object.
+
+Examples:
+- Database Connection
+- Logger
+- Configuration Manager
+- Cache Manager
+
+Creating multiple objects may:
+- waste memory
+- create conflicts
+- reduce performance
+
+---
+
+# Main Idea of Singleton
+
+Singleton uses:
+- private constructor
+- static instance
+- static getter function
+
+This prevents users from creating multiple objects directly.
+
+---
+
+# Singleton Code
+
+```cpp
+class Singleton {
+
+private:
+
+    static Singleton* instance;
+
+    Singleton() {
+        cout << "Object Created";
+    }
+
+public:
+
+    static Singleton* getInstance() {
+
+        if(instance == nullptr) {
+            instance = new Singleton();
+        }
+
+        return instance;
+    }
+};
+
+Singleton* Singleton::instance = nullptr;
+````
+
+---
+
+# Usage
+
+```cpp id="0x9mrt"
+Singleton* s1 = Singleton::getInstance();
+
+Singleton* s2 = Singleton::getInstance();
+```
+
+Both:
+
+* s1
+* s2
+
+point to same object.
+
+---
+
+# Why Constructor is Private
+
+```cpp id="3m7kzt"
+Singleton s;
+```
+
+should not be possible.
+
+Private constructor prevents direct object creation.
+
+Objects can only be created using:
+
+```cpp id="9r4xpm"
+getInstance()
+```
+
+---
+
+# How Singleton Works
+
+First call:
+
+```cpp id="5m2xqp"
+getInstance()
+```
+
+creates object.
+
+Next calls:
+return same object again.
+
+---
+
+# Advantages of Singleton
+
+* Only one object
+* Saves memory
+* Global access point
+* Better resource management
+
+---
+
+# Disadvantages of Singleton
+
+* Hard to test
+* Global state issues possible
+* Tight coupling may increase
+
+---
+
+# Real Life Example
+
+Prime Minister:
+only one PM exists at a time.
+
+Same concept:
+single instance in entire system.
+
+---
+
+# SOLID Principles Revision
+
+# SRP - Single Responsibility Principle
+
+One class should have only one responsibility.
+
+---
+
+# OCP - Open Closed Principle
+
+Software should be:
+
+* open for extension
+* closed for modification
+
+---
+
+# LSP - Liskov Substitution Principle
+
+Child class should properly behave like parent class.
+
+---
+
+# ISP - Interface Segregation Principle
+
+Do not force classes to implement unnecessary methods.
+
+---
+
+# DIP - Dependency Inversion Principle
+
+Depend on abstraction,
+not concrete implementation.
+
+```
+```
