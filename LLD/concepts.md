@@ -696,7 +696,6 @@ not concrete implementation
 
 ---
 
-````md id="lld8xp"
 # LLD Notes Day 8
 
 # Design Patterns
@@ -779,7 +778,7 @@ Singleton* Singleton::instance = nullptr;
 
 # Usage
 
-```cpp id="0x9mrt"
+
 Singleton* s1 = Singleton::getInstance();
 
 Singleton* s2 = Singleton::getInstance();
@@ -796,7 +795,7 @@ point to same object.
 
 # Why Constructor is Private
 
-```cpp id="3m7kzt"
+
 Singleton s;
 ```
 
@@ -816,7 +815,6 @@ getInstance()
 
 First call:
 
-```cpp id="5m2xqp"
 getInstance()
 ```
 
