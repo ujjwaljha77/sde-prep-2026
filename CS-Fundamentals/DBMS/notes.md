@@ -510,3 +510,5 @@ I → Independent Transactions
 
 D → Data Permanent
 ````
+
+---
