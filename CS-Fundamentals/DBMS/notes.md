@@ -288,3 +288,225 @@ Memory Trick:
 Non-key should not depend on another non-key.
 
 ---
+
+````md id="dbms9xp"
+# Indexing
+
+# What is Indexing?
+
+Indexing means:
+
+data ko fast search karne ka technique.
+
+It improves query performance.
+
+---
+
+# Real Life Example
+
+Book ke end me:
+index page hota hai.
+
+Agar kisi topic ka page number pata hai,
+to pura book search nahi karna padta.
+
+Same concept database me use hota hai.
+
+---
+
+# Without Index
+
+Database:
+line by line rows search karta hai.
+
+This is called:
+
+```sql
+Full Table Scan
+```
+
+It is slow for large databases.
+
+---
+
+# With Index
+
+Database directly required row tak pahuchta hai.
+
+Search becomes fast.
+
+---
+
+# Example
+
+Students Table
+
+| ID | Name |
+|---|---|
+| 1 | Rahul |
+| 2 | Ujjwal |
+| 3 | Aman |
+
+Query:
+
+```sql
+SELECT * FROM students
+WHERE id = 2;
+```
+
+Without index:
+database checks every row.
+
+With index:
+database directly jumps to ID = 2.
+
+---
+
+# Why Indexing Speeds Queries
+
+Because:
+search space reduces.
+
+Without index:
+Time Complexity:
+
+```cpp
+O(n)
+```
+
+With indexing:
+Time Complexity becomes approximately:
+
+```cpp
+O(log n)
+```
+
+---
+
+# B-Tree Index
+
+Most databases use:
+
+```text
+B-Tree
+```
+
+for indexing.
+
+---
+
+# Why B-Tree is Used
+
+Because:
+- sorted data
+- fast searching
+- fast insertion
+- fast deletion
+
+---
+
+# B-Tree Structure Example
+
+```text
+          50
+        /    \
+      20      80
+```
+
+Search:
+80
+
+Instead of checking all elements,
+directly move right.
+
+---
+
+# Advantages of Indexing
+
+- faster search
+- faster SELECT queries
+- reduced query execution time
+
+---
+
+# Disadvantages of Indexing
+
+- extra memory required
+- insert/update/delete can become slower
+
+Because:
+index also needs updates.
+
+---
+
+# ACID Properties
+
+Transactions in DBMS follow:
+
+```text
+ACID
+```
+
+---
+
+# Transaction
+
+Transaction means:
+
+group of database operations.
+
+Example:
+money transfer.
+
+---
+
+# Atomicity
+
+Atomicity means:
+
+```text
+all or nothing
+```
+
+If one operation fails:
+entire transaction fails.
+
+Example:
+money deducted but not credited should not happen.
+
+---
+
+# Consistency
+
+Database should always remain valid and correct.
+
+Rules and constraints should not break.
+
+---
+
+# Isolation
+
+Multiple transactions should not interfere with each other.
+
+---
+
+# Durability
+
+Once transaction is committed:
+data becomes permanent.
+
+Even after crash or restart,
+data should remain saved.
+
+---
+
+# Easy Memory Trick
+
+A → All or Nothing
+
+C → Correct State
+
+I → Independent Transactions
+
+D → Data Permanent
+````
