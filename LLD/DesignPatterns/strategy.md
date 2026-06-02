@@ -149,3 +149,5 @@ Paid using UPI: 500
 Strategy Pattern means:
 
 different algorithms can be switched dynamically at runtime.
+
+---
