@@ -143,5 +143,4 @@ Decorator Pattern means:
 add new features to objects
 without changing original class.
 
-
 ---

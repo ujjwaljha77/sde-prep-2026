@@ -153,3 +153,5 @@ Observer Pattern means:
 
 one object changes,
 all subscribed objects get notified automatically.
+
+---
