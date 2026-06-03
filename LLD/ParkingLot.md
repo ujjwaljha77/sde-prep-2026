@@ -244,3 +244,121 @@ ExitGate
 Payment completed
 → spot becomes free again
 
+---
+
+# Interview Discussion Answers
+
+## 1. How will you find empty spots?
+
+Maintain a list of parking spots.
+
+Each ParkingSpot will have:
+
+- spotId
+- isOccupied
+
+When vehicle enters:
+
+- find first spot where isOccupied = false
+- assign vehicle
+- mark isOccupied = true
+
+When vehicle exits:
+
+- mark isOccupied = false
+
+---
+
+## 2. How will you support multiple floors?
+
+ParkingLot will contain:
+
+- List<ParkingFloor>
+
+Each ParkingFloor contains:
+
+- List<ParkingSpot>
+
+Structure:
+
+ParkingLot
+|
+|---- Floor1
+|       |---- Spots
+|
+|---- Floor2
+|       |---- Spots
+
+This makes system scalable.
+
+---
+
+## 3. How will you support different vehicle types?
+
+Create Vehicle as base class.
+
+Derived classes:
+
+- Car
+- Bike
+- Truck
+
+ParkingSpot will also have:
+
+- spotType
+
+Examples:
+
+CarSpot
+BikeSpot
+TruckSpot
+
+Vehicle can only park in compatible spot.
+
+---
+
+## 4. How will you calculate parking fees?
+
+Ticket stores:
+
+- entryTime
+
+At exit:
+
+CurrentTime - EntryTime
+
+Fee Formula:
+
+Fee = Hours × Rate
+
+Example:
+
+2 Hours × ₹20
+
+Fee = ₹40
+
+Different vehicle types can have different rates.
+
+---
+
+## 5. How will you avoid assigning same spot twice?
+
+Use:
+
+- isOccupied flag
+
+Before assigning:
+
+check:
+
+isOccupied == false
+
+If occupied:
+
+skip spot
+
+After assignment:
+
+isOccupied = true
+
+This ensures one spot gets assigned to only one vehicle.
