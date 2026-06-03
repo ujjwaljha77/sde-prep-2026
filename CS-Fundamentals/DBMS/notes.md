@@ -512,3 +512,235 @@ D → Data Permanent
 ````
 
 ---
+
+# SQL Joins
+
+# What is JOIN?
+
+JOIN is used to combine data from multiple tables.
+
+It is used when related data exists in different tables.
+
+---
+
+# Example Tables
+
+Students
+
+| ID | Name |
+|---|---|
+| 1 | Ujjwal |
+| 2 | Rahul |
+| 3 | Aman |
+
+Marks
+
+| ID | Marks |
+|---|---|
+| 1 | 95 |
+| 2 | 88 |
+| 4 | 76 |
+
+---
+
+# INNER JOIN
+
+Returns only matching records from both tables.
+
+Query:
+
+```sql
+SELECT *
+FROM Students
+INNER JOIN Marks
+ON Students.ID = Marks.ID;
+```
+
+Output:
+
+| ID | Name | Marks |
+|---|---|---|
+| 1 | Ujjwal | 95 |
+| 2 | Rahul | 88 |
+
+---
+
+# Memory Trick
+
+INNER = INTERSECTION
+
+Only common records.
+
+---
+
+# LEFT JOIN
+
+Returns:
+- all rows from left table
+- matching rows from right table
+
+If no match:
+NULL
+
+Query:
+
+```sql
+SELECT *
+FROM Students
+LEFT JOIN Marks
+ON Students.ID = Marks.ID;
+```
+
+Output:
+
+| ID | Name | Marks |
+|---|---|---|
+| 1 | Ujjwal | 95 |
+| 2 | Rahul | 88 |
+| 3 | Aman | NULL |
+
+---
+
+# Memory Trick
+
+LEFT JOIN = LEFT TABLE FULL
+
+Left table always complete.
+
+---
+
+# RIGHT JOIN
+
+Returns:
+- all rows from right table
+- matching rows from left table
+
+If no match:
+NULL
+
+Query:
+
+```sql
+SELECT *
+FROM Students
+RIGHT JOIN Marks
+ON Students.ID = Marks.ID;
+```
+
+Output:
+
+| ID | Name | Marks |
+|---|---|---|
+| 1 | Ujjwal | 95 |
+| 2 | Rahul | 88 |
+| 4 | NULL | 76 |
+
+---
+
+# Memory Trick
+
+RIGHT JOIN = RIGHT TABLE FULL
+
+Right table always complete.
+
+---
+
+# FULL JOIN
+
+Returns:
+- all rows from left table
+- all rows from right table
+
+Matching records combined.
+
+Non-matching records get NULL.
+
+Query:
+
+```sql
+SELECT *
+FROM Students
+FULL OUTER JOIN Marks
+ON Students.ID = Marks.ID;
+```
+
+Output:
+
+| ID | Name | Marks |
+|---|---|---|
+| 1 | Ujjwal | 95 |
+| 2 | Rahul | 88 |
+| 3 | Aman | NULL |
+| 4 | NULL | 76 |
+
+---
+
+# Easy Visual
+
+Students IDs
+
+```text
+1 2 3
+```
+
+Marks IDs
+
+```text
+1 2 4
+```
+
+---
+
+INNER JOIN
+
+```text
+1 2
+```
+
+---
+
+LEFT JOIN
+
+```text
+1 2 3
+```
+
+---
+
+RIGHT JOIN
+
+```text
+1 2 4
+```
+
+---
+
+FULL JOIN
+
+```text
+1 2 3 4
+```
+
+---
+
+# Interview Question
+
+Difference Between INNER and LEFT JOIN?
+
+INNER JOIN:
+returns only matching rows.
+
+LEFT JOIN:
+returns all rows from left table and matching rows from right table.
+
+---
+
+# Easy Revision Trick
+
+INNER → Common Records
+
+LEFT → All Left Records
+
+RIGHT → All Right Records
+
+FULL → Everything
