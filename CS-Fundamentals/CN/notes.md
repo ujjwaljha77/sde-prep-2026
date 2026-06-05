@@ -213,3 +213,127 @@ Render
 ↓
 
 Display
+
+---
+
+# TCP vs UDP
+
+# TCP
+
+TCP = Transmission Control Protocol
+
+TCP is:
+
+- Connection Oriented
+- Reliable
+- Ordered
+
+Before sending data:
+
+Connection is established using
+TCP 3-Way Handshake.
+
+---
+
+# Features of TCP
+
+- Reliable delivery
+- Error checking
+- Ordered packets
+- Retransmission supported
+
+---
+
+# Example Uses
+
+- Web Browsing (HTTP/HTTPS)
+- Email
+- File Transfer (FTP)
+- Banking Applications
+
+---
+
+# UDP
+
+UDP = User Datagram Protocol
+
+UDP is:
+
+- Connectionless
+- Fast
+- Unreliable
+
+No handshake required.
+
+---
+
+# Features of UDP
+
+- Faster than TCP
+- No retransmission
+- No ordering guarantee
+- Lower overhead
+
+---
+
+# Example Uses
+
+- Video Streaming
+- Online Gaming
+- Video Calls
+- DNS
+
+---
+
+# TCP vs UDP
+
+| TCP | UDP |
+|------|------|
+| Connection Oriented | Connectionless |
+| Reliable | Unreliable |
+| Ordered Delivery | No Order Guarantee |
+| Slower | Faster |
+| Higher Overhead | Lower Overhead |
+| Handshake Required | No Handshake |
+
+---
+
+# Interview Question
+
+When should you use TCP?
+
+Use TCP when reliability is important.
+
+Examples:
+- Banking
+- Login Systems
+- File Transfer
+
+---
+
+# Interview Question
+
+When should you use UDP?
+
+Use UDP when speed is important.
+
+Examples:
+- Gaming
+- Live Streaming
+- Video Calls
+
+---
+
+# Memory Trick
+
+TCP
+
+Reliable
+Accurate
+Slower
+
+UDP
+
+Fast
+Lightweight
+Unreliable
