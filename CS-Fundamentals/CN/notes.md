@@ -337,3 +337,246 @@ UDP
 Fast
 Lightweight
 Unreliable
+
+---
+
+# HTTP vs HTTPS
+
+# HTTP
+
+HTTP = HyperText Transfer Protocol
+
+Used for communication between:
+
+Browser ↔ Server
+
+HTTP sends data in plain text.
+
+Not secure.
+
+Default Port:
+
+80
+
+Example:
+
+http://example.com
+
+---
+
+# Problems with HTTP
+
+Data is not encrypted.
+
+Anyone in the network can read:
+
+- Username
+- Password
+- Messages
+
+This is called packet sniffing.
+
+---
+
+# HTTPS
+
+HTTPS = HyperText Transfer Protocol Secure
+
+HTTPS is HTTP + SSL/TLS.
+
+Data is encrypted before transmission.
+
+Secure communication.
+
+Default Port:
+
+443
+
+Example:
+
+https://google.com
+
+---
+
+# Advantages of HTTPS
+
+- Encryption
+- Authentication
+- Data Integrity
+- Security
+
+---
+
+# SSL/TLS
+
+SSL/TLS creates secure encrypted communication.
+
+Before data transfer:
+
+Browser and server perform TLS Handshake.
+
+Then encrypted communication starts.
+
+---
+
+# HTTP vs HTTPS
+
+| HTTP | HTTPS |
+|--------|--------|
+| Not Secure | Secure |
+| No Encryption | Encrypted |
+| Port 80 | Port 443 |
+| Faster | Slightly Slower |
+| Vulnerable | Secure |
+
+---
+
+# Example
+
+Login Form
+
+HTTP:
+
+username = ujjwal
+password = 1234
+
+Anyone can read data.
+
+---
+
+HTTPS:
+
+username = encrypted
+password = encrypted
+
+Cannot be read easily.
+
+---
+
+# Interview Answer
+
+HTTP is a protocol used for communication between browser and server. HTTPS is the secure version of HTTP that uses SSL/TLS encryption to protect data during transmission.
+
+---
+
+# DNS
+
+DNS = Domain Name System
+
+DNS converts:
+
+Domain Name
+
+↓
+
+IP Address
+
+Example:
+
+google.com
+
+↓
+
+142.xxx.xxx.xxx
+
+---
+
+# Why DNS?
+
+Hum humans:
+
+google.com
+
+yaad rakh sakte hain.
+
+Computers:
+
+IP Address
+
+samajhte hain.
+
+DNS acts like a phonebook of the internet.
+
+---
+
+# DNS Lookup Flow
+
+User enters:
+
+google.com
+
+↓
+
+Browser Cache Check
+
+↓
+
+OS Cache Check
+
+↓
+
+DNS Resolver
+
+↓
+
+DNS Server
+
+↓
+
+IP Address Returned
+
+↓
+
+Connection Established
+
+---
+
+# Example
+
+google.com
+
+↓
+
+142.250.xxx.xxx
+
+Browser now connects to that IP.
+
+---
+
+# Interview Answer
+
+DNS converts domain names into IP addresses so that browsers can locate and communicate with servers on the internet.
+
+---
+
+# Memory Trick
+
+google.com
+
+↓
+
+DNS
+
+↓
+
+IP Address
+
+↓
+
+TCP Handshake
+
+↓
+
+HTTPS Handshake
+
+↓
+
+HTTP Request
+
+↓
+
+HTTP Response
+
+↓
+
+Browser Render
