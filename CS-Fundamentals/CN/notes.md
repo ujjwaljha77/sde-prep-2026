@@ -747,3 +747,36 @@ A Load Balancer distributes incoming traffic among multiple servers to improve p
 
 ---
 
+# Interview Question
+
+Round Robin vs Least Connections
+
+Round Robin:
+
+Request assigned sequentially.
+
+Least Connections:
+
+Request assigned to server with minimum active connections.
+
+---
+
+# Memory Trick
+
+Load Balancer
+
+↓
+
+Distribute Traffic
+
+↓
+
+Round Robin
+
+Equal Rotation
+
+↓
+
+Least Connections
+
+Least Busy Server
