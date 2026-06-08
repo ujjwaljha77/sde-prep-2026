@@ -580,3 +580,170 @@ HTTP Response
 ↓
 
 Browser Render
+
+---
+
+# Load Balancer
+
+# What is Load Balancer?
+
+A Load Balancer distributes incoming requests across multiple servers.
+
+Purpose:
+
+- prevent server overload
+- improve performance
+- increase availability
+- provide fault tolerance
+
+---
+
+# Example
+
+Without Load Balancer
+
+Client Requests
+       |
+       v
+     Server 1
+
+All traffic goes to one server.
+
+Server may become overloaded.
+
+---
+
+# With Load Balancer
+
+Clients
+   |
+   v
+
+Load Balancer
+
+ /    |    \
+v     v     v
+
+S1    S2    S3
+
+Requests are distributed among servers.
+
+---
+
+# Why Load Balancer?
+
+Benefits:
+
+- High Availability
+- Scalability
+- Better Performance
+- Fault Tolerance
+
+---
+
+# Round Robin Algorithm
+
+Most common algorithm.
+
+Requests are assigned one by one in circular order.
+
+Example:
+
+Servers:
+
+S1
+S2
+S3
+
+Requests:
+
+R1 → S1
+R2 → S2
+R3 → S3
+R4 → S1
+R5 → S2
+R6 → S3
+
+Simple and easy.
+
+---
+
+# Advantages
+
+- Easy implementation
+- Equal distribution
+
+---
+
+# Disadvantages
+
+Does not consider server load.
+
+Example:
+
+S1 may already be busy,
+but still receives requests.
+
+---
+
+# Least Connections Algorithm
+
+Request goes to server with minimum active connections.
+
+Example:
+
+Current Connections
+
+S1 = 10
+
+S2 = 3
+
+S3 = 5
+
+New Request
+
+↓
+
+Assigned to S2
+
+Because S2 has least load.
+
+---
+
+# Advantages
+
+- Better load distribution
+- Suitable for varying workloads
+
+---
+
+# Disadvantages
+
+Need to track active connections.
+
+---
+
+# Real World Example
+
+Google
+
+Amazon
+
+Netflix
+
+Facebook
+
+Use load balancers to distribute millions of requests.
+
+---
+
+# Interview Question
+
+Why use Load Balancer?
+
+Answer:
+
+A Load Balancer distributes incoming traffic among multiple servers to improve performance, availability, scalability, and fault tolerance.
+
+---
+
