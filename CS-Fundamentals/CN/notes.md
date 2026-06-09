@@ -780,3 +780,290 @@ Equal Rotation
 Least Connections
 
 Least Busy Server
+
+---
+
+# REST API
+
+REST = Representational State Transfer
+
+REST API allows communication between:
+
+Client ↔ Server
+
+Examples:
+
+- Mobile App ↔ Backend
+- React Frontend ↔ Backend
+- Browser ↔ Server
+
+---
+
+# HTTP Methods
+
+## GET
+
+Used to fetch data.
+
+Example:
+
+GET /users
+
+Response:
+
+List of users
+
+---
+
+## POST
+
+Used to create data.
+
+Example:
+
+POST /users
+
+Creates new user.
+
+---
+
+## PUT
+
+Used to update entire resource.
+
+Example:
+
+PUT /users/1
+
+Updates complete user.
+
+---
+
+## DELETE
+
+Used to delete resource.
+
+Example:
+
+DELETE /users/1
+
+Deletes user.
+
+---
+
+# GET vs POST vs PUT vs DELETE
+
+GET
+
+- Read Data
+- No Modification
+
+POST
+
+- Create Data
+
+PUT
+
+- Update Existing Data
+
+DELETE
+
+- Remove Data
+
+---
+
+# Example
+
+User Resource
+
+GET /users/1
+
+Returns user details.
+
+---
+
+POST /users
+
+Creates user.
+
+---
+
+PUT /users/1
+
+Updates user.
+
+---
+
+DELETE /users/1
+
+Deletes user.
+
+---
+
+# HTTP Status Codes
+
+## 200 OK
+
+Request successful.
+
+Example:
+
+Data fetched successfully.
+
+---
+
+## 201 Created
+
+Resource created successfully.
+
+Example:
+
+New user created.
+
+---
+
+## 400 Bad Request
+
+Client sent invalid request.
+
+---
+
+## 401 Unauthorized
+
+Authentication required.
+
+Example:
+
+Login required.
+
+---
+
+## 403 Forbidden
+
+User authenticated but not allowed.
+
+---
+
+## 404 Not Found
+
+Resource not found.
+
+Example:
+
+User does not exist.
+
+---
+
+## 500 Internal Server Error
+
+Problem on server side.
+
+---
+
+# Status Code Categories
+
+1xx → Informational
+
+2xx → Success
+
+3xx → Redirection
+
+4xx → Client Error
+
+5xx → Server Error
+
+---
+
+# Idempotency
+
+Meaning:
+
+Multiple identical requests produce same result.
+
+---
+
+# Idempotent Methods
+
+GET
+
+Calling:
+
+GET /users/1
+
+100 times
+
+Result remains same.
+
+---
+
+PUT
+
+PUT /users/1
+
+Same update repeated
+
+Result remains same.
+
+---
+
+DELETE
+
+DELETE /users/1
+
+Deleting same resource repeatedly
+
+Final state remains deleted.
+
+---
+
+# Non-Idempotent Method
+
+POST
+
+POST /users
+
+Called 5 times
+
+Creates 5 users.
+
+Different result every time.
+
+---
+
+# Interview Questions
+
+What is REST API?
+
+REST API is an architectural style that enables communication between client and server using HTTP methods.
+
+---
+
+What is Idempotency?
+
+An operation is idempotent if performing it multiple times gives the same final result.
+
+---
+
+# Memory Trick
+
+GET
+
+Read
+
+↓
+
+POST
+
+Create
+
+↓
+
+PUT
+
+Update
+
+↓
+
+DELETE
+
+Delete
